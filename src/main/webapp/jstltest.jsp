@@ -2,8 +2,6 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="sql" uri="http://java.sun.com/jsp/jstl/sql"%>
-<sql:setDataSource dataSource="jdbc/postgres" var="db"/>
-
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,16 +9,15 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<c:set var="test">
+		<c:forEach var="i" begin="1" end="10">
+			,test${i}
+		</c:forEach>
+	</c:set>
 
-	<c:set var="data" value="test！！" />
-	<c:out value="${data}" />
-
-	<sql:query var="rs" dataSource="${db}">
-		select NOW() DATE
-	</sql:query>
-
-	<c:forEach var="rec" items="${rs.rows}">
-		out:<c:out value="${rec.DATE}" />
+	<c:set var="cnt" value="5" />
+	<c:forEach var="i" begin="1" end="${cnt}">
+		out:${cnt}
 	</c:forEach>
 </body>
 </html>
